@@ -34,14 +34,14 @@ const options: CreateDataProviderOptions = {
 
     // 3. Extract the data array from API response
     mapResponse: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
 
       return payload.data ?? [];
     },
 
     // 4. Extract the total count for pagination
     getTotalCount: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
 
       return payload.pagination?.total ?? payload.data?.length ?? 0;
     },
