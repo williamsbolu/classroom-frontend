@@ -29,3 +29,41 @@ export const MOCK_SUBJECTS: Subject[] = [
     createdAt: new Date().toISOString(),
   },
 ];
+
+export const teachers = [
+  {
+    id: "1",
+    name: "John Doe",
+  },
+  {
+    id: "2",
+    name: "Jane Smith",
+  },
+  {
+    id: "3",
+    name: "Dr. Alan Turing",
+  },
+];
+
+export const subjects = [
+  {
+    id: 1,
+    name: "Mathematics",
+    code: "MATH",
+  },
+  {
+    id: 2,
+    name: "Computer Science",
+    code: "CS",
+  },
+  {
+    id: 3,
+    name: "Physics",
+    code: "PHY",
+  },
+  {
+    id: 4,
+    name: "Chemistry",
+    code: "CHEM",
+  },
+];
