@@ -46,6 +46,12 @@ const options: CreateDataProviderOptions = {
           if (field === "department") params.department = value;
           if (field === "name" || field === "code") params.search = value;
         }
+
+        if (resource === "classes") {
+          if (field === "name") params.search = value;
+          if (field === "subject") params.subject = value;
+          if (field === "teacher") params.teacher = value;
+        }
       });
 
       return params;
@@ -80,7 +86,7 @@ const options: CreateDataProviderOptions = {
     mapResponse: async (response) => {
       const json: CreateResponse = await response.json();
 
-      return json.data ?? [];
+      return json.data ?? {};
     },
   },
   getOne: {
@@ -89,7 +95,7 @@ const options: CreateDataProviderOptions = {
     mapResponse: async (response) => {
       const json: GetOneResponse = await response.json();
 
-      return json.data ?? [];
+      return json.data ?? {};
     },
   },
 };
