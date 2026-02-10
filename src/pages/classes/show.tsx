@@ -82,6 +82,7 @@ const Show = () => {
     columns: studentColumns,
     refineCoreProps: {
       resource: `classes/${classId}/users`,
+      queryOptions: { enabled: !!classId },
       pagination: {
         pageSize: 3,
         mode: "server",
@@ -108,7 +109,7 @@ const Show = () => {
             ? "Loading class details..."
             : isError
             ? "Failed to load class details..."
-            : "Class details not not found"}
+            : "Class details not found"}
         </p>
       </ShowView>
     );
@@ -120,7 +121,7 @@ const Show = () => {
     .filter(Boolean)
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase())
-    .join();
+    .join("");
 
   const placeholderUrl = `https://placehold.co/600x400?text=${encodeURIComponent(
     teachersInitials || "NA",
