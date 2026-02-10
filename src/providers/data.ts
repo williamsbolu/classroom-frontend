@@ -1,7 +1,7 @@
 import { HttpError } from "@refinedev/core";
 import { createDataProvider, CreateDataProviderOptions } from "@refinedev/rest";
 import { BACKEND_BASE_URL } from "@/constants";
-import { ListResponse } from "@/types";
+import { CreateResponse, ListResponse } from "@/types";
 
 if (!BACKEND_BASE_URL)
   throw new Error(
@@ -67,6 +67,20 @@ const options: CreateDataProviderOptions = {
       const payload: ListResponse = await response.clone().json();
 
       return payload.pagination?.total ?? payload.data?.length ?? 0;
+    },
+  },
+  create: {
+    // Build the endpoint for creating records
+    getEndpoint: ({ resource }) => resource,
+
+    // Transform form data into API request body
+    buildBodyParams: async ({ variables }) => variables,
+
+    // Extract the created record from API response
+    mapResponse: async (response) => {
+      const json: CreateResponse = await response.json();
+
+      return json.data ?? [];
     },
   },
 };
