@@ -87,7 +87,7 @@ const ClassesList = () => {
           const status = getValue<string>();
           return (
             <Badge variant={status === "active" ? "default" : "secondary"}>
-              {status.charAt(0).toUpperCase() + status.slice(1)}
+              {status.charAt(0)?.toUpperCase() + status.slice(1)}
             </Badge>
           );
         },
